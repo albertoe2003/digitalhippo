@@ -1,0 +1,19 @@
+services:
+  postgres-db:
+    image: postgres:15.3
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: 7219
+  admin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - 8080:80
+    depends_on:
+      - postgres-db
+
+    environment:
+      PGADMIN_DEFAULT_EMAIL: cachorios@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: 7219
